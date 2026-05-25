@@ -38,3 +38,7 @@ test {
 application {
     mainClass = "org.example.Main"
 }
+
+run {
+    systemProperties System.getProperties()
+}

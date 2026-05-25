@@ -1,0 +1,15 @@
+Nume Tema: Managementul unei institutii de Micro-creditare (IMC)
+Functionalitati:
+1. Gestiunea Profilului client - inregistrarea clientilor cu date personale
+2. Simularea creditului
+3. Creare cerere credit
+4. Evaluarea eligibilitatii == (sistemul decide daca cererea poate fi aprobata)
+5. Generarea planului de rambursare 
+6. Procesarea platilor
+7. Calculul penalitatilor de intarziere
+8. Monitorizarea portofoliului == (statistica pentru manager -- suma totala imprumutata, suma totala incasata, si procentul clientilor restantieri)
+
+
+Cerinte non-functionale:
+Sistem de gestiune a utilizatorilor -- atributii specifice tipului de user
+-- (e.g agentul poate crea credite si inregistra client, iar admin-ul poate modifica ratele dobanzilor si vedea rapoartele financiare)

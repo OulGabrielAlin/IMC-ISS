@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="515.0" prefWidth="743.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.DummyController">
+    <VBox prefHeight="600.0" prefWidth="850.0" spacing="20.0" style="-fx-background-color: #f4f7f6;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+        <children>
+            <Label text="Simulator de Credit">
+                <font>
+                    <Font name="System Bold" size="22.0" />
+                </font>
+            </Label>
+            <Separator prefWidth="200.0" />
+
+            <HBox spacing="20.0" VBox.vgrow="ALWAYS">
+                <children>
+                    <VBox maxWidth="300.0" prefWidth="280.0" spacing="15.0" style="-fx-background-color: white; -fx-padding: 15; -fx-border-color: #dcdde1; -fx-border-radius: 5; -fx-background-radius: 5;">
+                        <children>
+                            <Label text="Parametri Credit" textFill="#2f3640">
+                                <font>
+                                    <Font name="System Bold" size="14.0" />
+                                </font>
+                            </Label>
+
+                            <Label text="Suma Solicitata (RON):" />
+                            <TextField fx:id="txtSumaSimulare" promptText="ex: 5000" />
+
+                            <Label text="Perioada (Luni):" />
+                            <Slider fx:id="sliderPerioada" blockIncrement="1.0" majorTickUnit="6.0" max="60.0" min="3.0" showTickLabels="true" showTickMarks="true" value="12.0" />
+
+                            <Label text="Tip Dobanda:" />
+                            <RadioButton mnemonicParsing="false" selected="true" text="Fixa (standard)">
+                                <toggleGroup>
+                                    <ToggleGroup fx:id="tipDobanda" />
+                                </toggleGroup></RadioButton>
+                            <RadioButton mnemonicParsing="false" text="Variabila" toggleGroup="$tipDobanda" />
+
+                            <Separator prefWidth="200.0" />
+
+                            <Button fx:id="btnCalculeaza" maxWidth="Infinity" mnemonicParsing="false" prefHeight="40.0" style="-fx-background-color: #3498db;" text="Calculeaza Scadentar" textFill="WHITE">
+                                <font>
+                                    <Font name="System Bold" size="13.0" />
+                                </font>
+                            </Button>
+                        </children>
+                    </VBox>
+
+                    <VBox spacing="10.0" style="-fx-background-color: white; -fx-padding: 15; -fx-border-color: #dcdde1; -fx-border-radius: 5; -fx-background-radius: 5;" HBox.hgrow="ALWAYS">
+                        <children>
+                            <HBox alignment="CENTER_LEFT">
+                                <children>
+                                    <Label text="Plan de Rambursare Generat" textFill="#2f3640">
+                                        <font>
+                                            <Font name="System Bold" size="14.0" />
+                                        </font>
+                                    </Label>
+                                    <Region HBox.hgrow="ALWAYS" />
+                                    <Label fx:id="lblTotalDePlata" text="Total de plata: 0.00 RON" textFill="#e67e22">
+                                        <font>
+                                            <Font name="System Bold" size="13.0" />
+                                        </font>
+                                    </Label>
+                                </children>
+                            </HBox>
+
+                            <TableView fx:id="tableScadentar" VBox.vgrow="ALWAYS">
+                                <columns>
+                                    <TableColumn prefWidth="60.0" text="Nr. Rata" />
+                                    <TableColumn prefWidth="100.0" text="Data Scadenta" />
+                                    <TableColumn prefWidth="120.0" text="Suma Baza" />
+                                    <TableColumn prefWidth="100.0" text="Dobanda" />
+                                    <TableColumn prefWidth="120.0" text="Total Rata" />
+                                </columns>
+                            </TableView>
+
+                            <HBox alignment="CENTER_RIGHT" spacing="10.0">
+                                <children>
+                                    <Button mnemonicParsing="false" text="Export PDF" />
+                                    <Button style="-fx-background-color: #2ecc71;" text="Continua spre Cerere Credit" textFill="WHITE">
+                                        <font>
+                                            <Font name="System Bold" size="12.0" />
+                                        </font></Button>
+                                </children>
+                            </HBox>
+                        </children>
+                    </VBox>
+                </children>
+            </HBox>
+        </children>
+        <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+        </padding>
+    </VBox>
+</AnchorPane>

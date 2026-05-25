@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.DummyController">
+    <children>
+        <VBox spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <padding>
+                <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+            </padding>
+            <children>
+                <VBox>
+                    <children>
+                        <Label text="Inregistrare Plata Rata">
+                            <font>
+                                <Font name="System Bold" size="24.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </VBox>
+
+                <Separator prefWidth="200.0" />
+
+                <HBox spacing="20.0" VBox.vgrow="ALWAYS">
+                    <children>
+                        <VBox prefWidth="400.0" spacing="15.0">
+                            <children>
+                                <Label text="1. Selectie Credit Activ" textFill="#2980b9">
+                                    <font>
+                                        <Font name="System Bold" size="16.0" />
+                                    </font>
+                                </Label>
+                                <HBox spacing="10.0">
+                                    <children>
+                                        <TextField fx:id="txtCautareCnp" promptText="CNP Client..." HBox.hgrow="ALWAYS" />
+                                        <Button mnemonicParsing="false" text="Cauta" />
+                                    </children>
+                                </HBox>
+                                <TableView fx:id="tableCrediteActive" VBox.vgrow="ALWAYS">
+                                    <columns>
+                                        <TableColumn prefWidth="120.0" text="Nr. Contract" />
+                                        <TableColumn prefWidth="120.0" text="Suma Totala" />
+                                        <TableColumn prefWidth="120.0" text="Status" />
+                                    </columns>
+                                </TableView>
+                            </children>
+                        </VBox>
+
+                        <VBox spacing="15.0" style="-fx-background-color: #fdfdfd; -fx-padding: 15; -fx-border-color: #bdc3c7; -fx-border-radius: 5;" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label text="2. Detalii Rata Scadenta" textFill="#2980b9">
+                                    <font>
+                                        <Font name="System Bold" size="16.0" />
+                                    </font>
+                                </Label>
+
+                                <GridPane hgap="10.0" vgap="15.0">
+                                    <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="120.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="180.0" />
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    </rowConstraints>
+                                    <children>
+                                        <Label text="Data Scadenta:" />
+                                        <TextField fx:id="txtDataScadenta" editable="false" style="-fx-background-color: #ecf0f1;" GridPane.columnIndex="1" />
+                                        <Label text="Suma de Plata:" GridPane.rowIndex="1" />
+                                        <TextField fx:id="txtSumaDatorata" editable="false" style="-fx-font-weight: bold; -fx-text-fill: #e67e22;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                        <Label text="Penalitati:" GridPane.rowIndex="2" />
+                                        <TextField fx:id="txtPenalitati" editable="false" text="0.00 RON" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    </children>
+                                </GridPane>
+
+                                <Separator prefWidth="200.0" />
+
+                                <Label text="3. Introducere Plata" textFill="#27ae60">
+                                    <font>
+                                        <Font name="System Bold" size="16.0" />
+                                    </font>
+                                </Label>
+
+                                <VBox spacing="10.0">
+                                    <children>
+                                        <Label text="Suma Incasata (RON):" />
+                                        <TextField fx:id="txtSumaIncasata" prefHeight="35.0" promptText="Introdu suma primita..." />
+
+                                        <Label text="Metoda de Plata:" />
+                                        <ComboBox fx:id="cbMetodaPlata" maxWidth="Infinity" prefHeight="30.0" promptText="Selecteaza Metoda" />
+                                    </children>
+                                </VBox>
+
+                                <Region VBox.vgrow="ALWAYS" />
+
+                                <Button maxWidth="Infinity" mnemonicParsing="false" prefHeight="50.0" style="-fx-background-color: #27ae60;" text="FINALIZEAZA PLATA" textFill="WHITE">
+                                    <font>
+                                        <Font name="System Bold" size="14.0" />
+                                    </font>
+                                </Button>
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

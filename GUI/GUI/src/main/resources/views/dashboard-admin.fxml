@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #f0f3f5;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.DashboardAdminController">
+    <children>
+        <VBox spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <padding>
+                <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+            </padding>
+            <children>
+                <HBox alignment="CENTER_LEFT">
+                    <children>
+                        <VBox>
+                            <children>
+                                <Label text="Panou Control Administrator">
+                                    <font>
+                                        <Font name="System Bold" size="26.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                        </VBox>
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Button fx:id="btnLogout" mnemonicParsing="false" onAction="#handleLogout" style="-fx-background-color: #e74c3c;" text="Logout" textFill="WHITE" />
+                    </children>
+                </HBox>
+
+                <Separator prefWidth="200.0" />
+
+                <HBox spacing="20.0">
+                    <children>
+                        <VBox alignment="CENTER" prefHeight="100.0" prefWidth="220.0" style="-fx-background-color: white; -fx-border-color: #3498db; -fx-border-width: 0 0 5 0; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 5);">
+                            <children>
+                                <Label text="Total Imprumutat" textFill="#7f8c8d" />
+                                <Label text="1.250.000 RON" textFill="#2980b9">
+                                    <font>
+                                        <Font name="System Bold" size="20.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="100.0" prefWidth="220.0" style="-fx-background-color: white; -fx-border-color: #2ecc71; -fx-border-width: 0 0 5 0; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 5);">
+                            <children>
+                                <Label text="Total Incasari" textFill="#7f8c8d" />
+                                <Label text="840.500 RON" textFill="#27ae60">
+                                    <font>
+                                        <Font name="System Bold" size="20.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="100.0" prefWidth="220.0" style="-fx-background-color: white; -fx-border-color: #e67e22; -fx-border-width: 0 0 5 0; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 5);">
+                            <children>
+                                <Label text="Rata Restante" textFill="#7f8c8d" />
+                                <Label text="4.2 %" textFill="#e67e22">
+                                    <font>
+                                        <Font name="System Bold" size="20.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+
+                <HBox spacing="20.0" VBox.vgrow="ALWAYS">
+                    <children>
+                        <VBox prefWidth="300.0" spacing="15.0" style="-fx-background-color: white; -fx-padding: 20; -fx-border-color: #dcdde1;">
+                            <children>
+                                <Label text="Parametri Raport">
+                                    <font>
+                                        <Font name="System Bold" size="16.0" />
+                                    </font>
+                                </Label>
+                                <Separator prefWidth="200.0" />
+
+                                <Label text="Tip Raport:" />
+                                <ComboBox fx:id="cbTipRaport" maxWidth="Infinity" promptText="Selecteaza tip..." />
+
+                                <Label text="Data Inceput:" />
+                                <DatePicker fx:id="dpStart" maxWidth="Infinity" />
+
+                                <Label text="Data Sfarsit:" />
+                                <DatePicker fx:id="dpEnd" maxWidth="Infinity" />
+
+                                <Label text="Agent (Optional):" />
+                                <ComboBox fx:id="cbAgenti" maxWidth="Infinity" promptText="Toti agentii" />
+
+                                <Region VBox.vgrow="ALWAYS" />
+
+                                <Button maxWidth="Infinity" mnemonicParsing="false" prefHeight="40.0" style="-fx-background-color: #34495e;" text="GENEREAZA PREVIZUALIZARE" textFill="WHITE" />
+                                <Button maxWidth="Infinity" mnemonicParsing="false" prefHeight="40.0" style="-fx-background-color: #27ae60;" text="EXPORT PDF / EXCEL" textFill="WHITE" />
+                            </children>
+                        </VBox>
+
+                        <VBox spacing="10.0" style="-fx-background-color: white; -fx-padding: 15; -fx-border-color: #dcdde1;" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label text="Previzualizare Date Raport">
+                                    <font>
+                                        <Font name="System Bold" size="16.0" />
+                                    </font>
+                                </Label>
+                                <TableView fx:id="tableRaport" VBox.vgrow="ALWAYS">
+                                    <columns>
+                                        <TableColumn prefWidth="120.0" text="Data Tranzactie" />
+                                        <TableColumn prefWidth="200.0" text="Detalii Client / Contract" />
+                                        <TableColumn prefWidth="100.0" text="Suma" />
+                                        <TableColumn prefWidth="100.0" text="Tip" />
+                                        <TableColumn prefWidth="120.0" text="Agent" />
+                                    </columns>
+                                    <columnResizePolicy>
+                                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                    </columnResizePolicy>
+                                </TableView>
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

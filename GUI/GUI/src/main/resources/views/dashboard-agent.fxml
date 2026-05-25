@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.DashboardAgentController">
+    <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+        <left>
+            <VBox prefWidth="200.0" spacing="15.0" style="-fx-background-color: #2c3e50; -fx-padding: 20;">
+                <children>
+                    <Label text="PANOU AGENT" textFill="WHITE">
+                        <font>
+                            <Font name="System Bold" size="18.0" />
+                        </font>
+                    </Label>
+                    <Separator prefWidth="200.0" />
+                    <Button fx:id="btnClientManagement" maxWidth="Infinity" mnemonicParsing="false" onAction="#handleClientManagement" text="Gestiune Clienti" />
+                    <Button maxWidth="Infinity" mnemonicParsing="false" text="Simulator Credit" />
+                    <Button maxWidth="Infinity" mnemonicParsing="false" text="Creeaza Cerere" />
+                    <Button maxWidth="Infinity" mnemonicParsing="false" text="Procesare Plata" />
+                    <Button fx:id="btnLogout" maxWidth="Infinity" mnemonicParsing="false" onAction="#handleLogout" style="-fx-background-color: #e74c3c;" text="Logout" textFill="WHITE" />
+                </children>
+            </VBox>
+        </left>
+
+        <center>
+            <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" style="-fx-padding: 20;">
+                <children>
+                    <Label text="Credite Active / Cereri Recente">
+                        <font>
+                            <Font size="20.0" />
+                        </font>
+                    </Label>
+                    <HBox spacing="10.0">
+                        <children>
+                            <TextField promptText="Cauta după CNP sau Nume..." HBox.hgrow="ALWAYS" />
+                            <Button mnemonicParsing="false" text="Cauta" />
+                        </children>
+                    </HBox>
+                    <TableView VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn prefWidth="150.0" text="Client" />
+                            <TableColumn prefWidth="120.0" text="Nr. Contract" />
+                            <TableColumn prefWidth="100.0" text="Suma" />
+                            <TableColumn prefWidth="100.0" text="Status" />
+                            <TableColumn prefWidth="150.0" text="Ultima Plata" />
+                        </columns>
+                    </TableView>
+                </children>
+            </VBox>
+        </center>
+    </BorderPane>
+</AnchorPane>

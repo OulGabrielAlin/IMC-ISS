@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence" version="3.0">
+    <persistence-unit name="myPersistenceUnit">
+        <!-- Entity classes -->
+        <class>org.example.domain.AngajatIMC</class>
+        <class>org.example.domain.AgentCredit</class>
+        <class>org.example.domain.Administrator</class>
+        <class>org.example.domain.Client</class>
+        <class>org.example.domain.Credit</class>
+        <class>org.example.domain.CreditApplication</class>
+        <class>org.example.domain.Payment</class>
+        <class>org.example.domain.Rate</class>
+        <properties>
+            <!-- Database connection -->
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/ISS_IMC_DB"/>
+            <property name="jakarta.persistence.jdbc.user" value="postgres"/>
+            <property name="jakarta.persistence.jdbc.password" value="AlinGabriel1"/>
+            <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+            <!-- Hibernate settings -->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+
+            <property name="hibernate.connection.provider_class"
+                      value="org.hibernate.hikaricp.internal.HikariCPConnectionProvider"/>
+            <!-- HikariCP settings -->
+            <property name="hibernate.hikari.maximumPoolSize" value="25"/>
+            <property name="hibernate.hikari.minimumIdle" value="5"/>
+            <property name="hibernate.hikari.connectionTimeout" value="30000"/>
+            <property name="hibernate.hikari.idleTimeout" value="600000"/>
+            <property name="hibernate.hikari.maxLifetime" value="1800000"/>
+            <property name="hibernate.hikari.autoCommit" value="true"/> <property
+                name="hibernate.hikari.connectionTestQuery" value="SELECT 1"/>
+        </properties>
+    </persistence-unit></persistence>

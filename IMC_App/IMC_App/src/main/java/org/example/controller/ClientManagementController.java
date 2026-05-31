@@ -3,6 +3,8 @@ package org.example.controller;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -105,6 +107,8 @@ public class ClientManagementController {
         });
         tableClienti.setItems(model);
 
+        configureSearch();
+
         tableClienti.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 showClientDetails(newValue);
@@ -112,6 +116,32 @@ public class ClientManagementController {
                 clearFields();
             }
         });
+    }
+
+    private void configureSearch() {
+        FilteredList<Client> filteredData = new FilteredList<>(model, p -> true);
+
+        txtCautare.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(client -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                if (client.getCnp() != null && client.getCnp().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;
+                }
+
+                String fullName = client.getLastName() + " " + client.getFirstName();
+                return fullName.toLowerCase().contains(lowerCaseFilter);
+            });
+        });
+
+        SortedList<Client> sortedData = new SortedList<>(filteredData);
+        sortedData.comparatorProperty().bind(tableClienti.comparatorProperty());
+
+        tableClienti.setItems(sortedData);
     }
 
     private void loadData() {

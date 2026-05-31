@@ -20,6 +20,8 @@ public class Rate {
     @Enumerated(EnumType.STRING)
     private PaymentStatus paymentStatus;
 
+    private Double penalties = 0.0;
+
     @ManyToOne
     @JoinColumn(name = "credit_id")
     private Credit credit;
@@ -81,6 +83,14 @@ public class Rate {
 
     public void setCredit(Credit credit) {
         this.credit = credit;
+    }
+
+    public Double getPenalties() {
+        return penalties;
+    }
+
+    public void setPenalties(Double penalties) {
+        this.penalties = penalties;
     }
 
     @Override

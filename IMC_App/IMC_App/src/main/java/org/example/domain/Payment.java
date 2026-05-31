@@ -97,7 +97,6 @@ public class Payment {
                 ", paymentDate=" + paymentDate +
                 ", paymentAmount=" + paymentAmount +
                 ", paymentMethod=" + paymentMethod +
-                ", rate=" + rate +
                 '}';
     }
 }

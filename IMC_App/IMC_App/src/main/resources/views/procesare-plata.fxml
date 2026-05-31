@@ -17,13 +17,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.DummyController">
+<AnchorPane prefHeight="600.0" prefWidth="850.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.PaymentController">
     <children>
         <VBox spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <padding>
                 <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
             </padding>
             <children>
+            <Button mnemonicParsing="false" onAction="#handleBackToMain" text="Back" />
                 <VBox>
                     <children>
                         <Label text="Inregistrare Plata Rata">
@@ -47,15 +48,15 @@
                                 </Label>
                                 <HBox spacing="10.0">
                                     <children>
-                                        <TextField fx:id="txtCautareCnp" promptText="CNP Client..." HBox.hgrow="ALWAYS" />
-                                        <Button mnemonicParsing="false" text="Cauta" />
+                                        <TextField fx:id="txtCNPSearch" promptText="CNP Client..." HBox.hgrow="ALWAYS" />
+                                        <Button fx:id="btnSearch" mnemonicParsing="false" text="Cauta" />
                                     </children>
                                 </HBox>
-                                <TableView fx:id="tableCrediteActive" VBox.vgrow="ALWAYS">
+                                <TableView fx:id="tableRateActive" prefHeight="392.0" prefWidth="378.0" VBox.vgrow="ALWAYS">
                                     <columns>
-                                        <TableColumn prefWidth="120.0" text="Nr. Contract" />
-                                        <TableColumn prefWidth="120.0" text="Suma Totala" />
-                                        <TableColumn prefWidth="120.0" text="Status" />
+                                        <TableColumn fx:id="colRateNo" prefWidth="120.0" text="Nr. Rata" />
+                                        <TableColumn fx:id="colTotalAmount" prefWidth="120.0" text="Suma Totala" />
+                                        <TableColumn fx:id="colDeadline" prefWidth="120.0" text="Deadline" />
                                     </columns>
                                 </TableView>
                             </children>
@@ -69,7 +70,7 @@
                                     </font>
                                 </Label>
 
-                                <GridPane hgap="10.0" vgap="15.0">
+                                <GridPane hgap="10.0" prefHeight="149.0" prefWidth="348.0" vgap="40.0">
                                     <columnConstraints>
                                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="120.0" />
                                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="180.0" />
@@ -81,15 +82,15 @@
                                     </rowConstraints>
                                     <children>
                                         <Label text="Data Scadenta:" />
-                                        <TextField fx:id="txtDataScadenta" editable="false" style="-fx-background-color: #ecf0f1;" GridPane.columnIndex="1" />
+                                        <TextField fx:id="txtDeadline" editable="false" style="-fx-background-color: #ecf0f1;" GridPane.columnIndex="1" />
                                         <Label text="Suma de Plata:" GridPane.rowIndex="1" />
-                                        <TextField fx:id="txtSumaDatorata" editable="false" style="-fx-font-weight: bold; -fx-text-fill: #e67e22;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                        <TextField fx:id="txtDebt" editable="false" prefHeight="60.0" prefWidth="199.0" style="-fx-font-weight: bold; -fx-text-fill: #e67e22;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                         <Label text="Penalitati:" GridPane.rowIndex="2" />
-                                        <TextField fx:id="txtPenalitati" editable="false" text="0.00 RON" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                        <TextField fx:id="txtPenalties" editable="false" prefHeight="66.0" prefWidth="199.0" text="0.00 RON" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                     </children>
                                 </GridPane>
 
-                                <Separator prefWidth="200.0" />
+                                <Separator prefHeight="0.0" prefWidth="348.0" />
 
                                 <Label text="3. Introducere Plata" textFill="#27ae60">
                                     <font>
@@ -100,16 +101,16 @@
                                 <VBox spacing="10.0">
                                     <children>
                                         <Label text="Suma Incasata (RON):" />
-                                        <TextField fx:id="txtSumaIncasata" prefHeight="35.0" promptText="Introdu suma primita..." />
+                                        <TextField fx:id="txtPaidAmount" prefHeight="35.0" promptText="Introdu suma primita..." />
 
                                         <Label text="Metoda de Plata:" />
-                                        <ComboBox fx:id="cbMetodaPlata" maxWidth="Infinity" prefHeight="30.0" promptText="Selecteaza Metoda" />
+                                        <ComboBox fx:id="cbPaymentMethod" maxWidth="Infinity" prefHeight="30.0" promptText="Selecteaza Metoda" />
                                     </children>
                                 </VBox>
 
                                 <Region VBox.vgrow="ALWAYS" />
 
-                                <Button maxWidth="Infinity" mnemonicParsing="false" prefHeight="50.0" style="-fx-background-color: #27ae60;" text="FINALIZEAZA PLATA" textFill="WHITE">
+                                <Button fx:id="btnFinalizePayment" maxWidth="Infinity" mnemonicParsing="false" prefHeight="50.0" style="-fx-background-color: #27ae60;" text="FINALIZEAZA PLATA" textFill="WHITE">
                                     <font>
                                         <Font name="System Bold" size="14.0" />
                                     </font>

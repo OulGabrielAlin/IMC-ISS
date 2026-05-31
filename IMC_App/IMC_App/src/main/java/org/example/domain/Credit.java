@@ -108,6 +108,14 @@ public class Credit {
         this.rates = rates;
     }
 
+    public CreditApplication getCreditApplication() {
+        return creditApplication;
+    }
+
+    public void setCreditApplication(CreditApplication creditApplication) {
+        this.creditApplication = creditApplication;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;

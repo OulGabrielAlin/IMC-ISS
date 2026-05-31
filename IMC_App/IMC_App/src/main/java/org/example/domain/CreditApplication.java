@@ -24,6 +24,10 @@ public class CreditApplication {
     @Embedded
     private Period period;
 
+    private String destination;
+
+    private String observations;
+
     @ManyToOne
     @JoinColumn(name = "client_id")
     private Client client;
@@ -84,6 +88,22 @@ public class CreditApplication {
 
     public void setClient(Client client) {
         this.client = client;
+    }
+
+    public String getDestination() {
+        return destination;
+    }
+
+    public void setDestination(String destination) {
+        this.destination = destination;
+    }
+
+    public String getObservations() {
+        return observations;
+    }
+
+    public void setObservations(String observations) {
+        this.observations = observations;
     }
 
     @Override

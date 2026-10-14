@@ -18,13 +18,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="650.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.DummyController">
+<AnchorPane prefHeight="650.0" prefWidth="850.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.CreditCreationController">
     <children>
         <VBox spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <padding>
                 <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
             </padding>
             <children>
+            <Button mnemonicParsing="false" onAction="#handleBackToMain" text="Back" />
                 <VBox>
                     <children>
                         <Label text="Inregistrare Cerere Noua de Credit">
@@ -59,12 +60,12 @@
                                         <Label text="Căutare CNP:" />
                                         <HBox spacing="5.0" GridPane.columnIndex="1">
                                             <children>
-                                                <TextField fx:id="txtCnpCautare" promptText="CNP Client..." HBox.hgrow="ALWAYS" />
-                                                <Button mnemonicParsing="false" text="Verifica" />
+                                                <TextField fx:id="txtCNPSearch" promptText="CNP Client..." HBox.hgrow="ALWAYS" />
+                                                <Button fx:id="btnVerify" mnemonicParsing="false" text="Verifica" />
                                             </children>
                                         </HBox>
                                         <Label text="Nume Client:" GridPane.rowIndex="1" />
-                                        <TextField fx:id="txtNumeClient" editable="false" style="-fx-background-color: #ecf0f1;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                        <TextField fx:id="txtClientName" editable="false" style="-fx-background-color: #ecf0f1;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                         <Label text="Scor:" GridPane.rowIndex="2" />
                                         <ProgressBar fx:id="pbScoring" maxWidth="Infinity" progress="0.75" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                     </children>
@@ -86,12 +87,12 @@
                                         <RowConstraints minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
                                     </rowConstraints>
                                     <children>
-                                        <Label text="Suma Aprobata:" />
-                                        <TextField fx:id="txtSumaAprobata" promptText="RON" GridPane.columnIndex="1" />
+                                        <Label text="Suma ceruta:" />
+                                        <TextField fx:id="txtRequestedSum" promptText="RON" GridPane.columnIndex="1" />
                                         <Label text="Durata (Luni):" GridPane.rowIndex="1" />
                                         <TextField fx:id="txtDurataAprobata" promptText="Luni" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                         <Label text="Destinatie:" GridPane.rowIndex="2" />
-                                        <ComboBox fx:id="cbDestinatie" maxWidth="Infinity" promptText="Selectati..." GridPane.columnIndex="1" />
+                                        <ComboBox fx:id="cbDestination" maxWidth="Infinity" promptText="Selectati..." GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                     </children>
                                 </GridPane>
                             </children>
@@ -115,7 +116,7 @@
                                             <children>
                                                 <Label text="Dobanda Anuala:" />
                                                 <Region HBox.hgrow="ALWAYS" />
-                                                <Label style="-fx-font-weight: bold;" text="12%" />
+                                                <Label style="-fx-font-weight: bold;" text="18%" />
                                             </children>
                                         </HBox>
                                         <HBox>
@@ -135,8 +136,8 @@
                 </HBox>
                 <HBox alignment="CENTER_RIGHT" spacing="15.0">
                     <children>
-                        <Button mnemonicParsing="false" prefWidth="100.0" text="Anuleaza" />
-                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="220.0" style="-fx-background-color: #27ae60;" text="TRIMITE SPRE APROBARE" textFill="WHITE">
+                        <Button mnemonicParsing="false" onAction="#clearForm" prefWidth="100.0" text="Anuleaza" />
+                        <Button mnemonicParsing="false" onAction="#handleCreateCreditApplication" prefHeight="40.0" prefWidth="220.0" style="-fx-background-color: #27ae60;" text="TRIMITE SPRE APROBARE" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="13.0" />
                             </font>

@@ -16,9 +16,10 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="515.0" prefWidth="743.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.DummyController">
+<AnchorPane prefHeight="515.0" prefWidth="743.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.SimulationController">
     <VBox prefHeight="600.0" prefWidth="850.0" spacing="20.0" style="-fx-background-color: #f4f7f6;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
         <children>
+         <Button fx:id="btnBack" mnemonicParsing="false" onAction="#handleBackToMain" text="Back" />
             <Label text="Simulator de Credit">
                 <font>
                     <Font name="System Bold" size="22.0" />
@@ -37,21 +38,21 @@
                             </Label>
 
                             <Label text="Suma Solicitata (RON):" />
-                            <TextField fx:id="txtSumaSimulare" promptText="ex: 5000" />
+                            <TextField fx:id="txtSumSimulation" promptText="ex: 5000" />
 
-                            <Label text="Perioada (Luni):" />
-                            <Slider fx:id="sliderPerioada" blockIncrement="1.0" majorTickUnit="6.0" max="60.0" min="3.0" showTickLabels="true" showTickMarks="true" value="12.0" />
+                            <Label fx:id="lblPeriod" text="Perioada (Luni):" />
+                            <Slider fx:id="sliderPeriod" blockIncrement="1.0" majorTickUnit="6.0" max="60.0" min="3.0" showTickLabels="true" showTickMarks="true" value="12.0" />
 
                             <Label text="Tip Dobanda:" />
-                            <RadioButton mnemonicParsing="false" selected="true" text="Fixa (standard)">
+                            <RadioButton mnemonicParsing="false" selected="true" text="Fixa (standard) - 18%">
                                 <toggleGroup>
                                     <ToggleGroup fx:id="tipDobanda" />
                                 </toggleGroup></RadioButton>
-                            <RadioButton mnemonicParsing="false" text="Variabila" toggleGroup="$tipDobanda" />
+                            <RadioButton disable="true" mnemonicParsing="false" text="Variabila" toggleGroup="$tipDobanda" />
 
                             <Separator prefWidth="200.0" />
 
-                            <Button fx:id="btnCalculeaza" maxWidth="Infinity" mnemonicParsing="false" prefHeight="40.0" style="-fx-background-color: #3498db;" text="Calculeaza Scadentar" textFill="WHITE">
+                            <Button fx:id="btnCalculeaza" maxWidth="Infinity" mnemonicParsing="false" onAction="#handleSimulate" prefHeight="40.0" style="-fx-background-color: #3498db;" text="Calculeaza Scadentar" textFill="WHITE">
                                 <font>
                                     <Font name="System Bold" size="13.0" />
                                 </font>
@@ -69,7 +70,7 @@
                                         </font>
                                     </Label>
                                     <Region HBox.hgrow="ALWAYS" />
-                                    <Label fx:id="lblTotalDePlata" text="Total de plata: 0.00 RON" textFill="#e67e22">
+                                    <Label fx:id="lblTotalToPay" text="Total de plata: 0.00 RON" textFill="#e67e22">
                                         <font>
                                             <Font name="System Bold" size="13.0" />
                                         </font>
@@ -79,23 +80,13 @@
 
                             <TableView fx:id="tableScadentar" VBox.vgrow="ALWAYS">
                                 <columns>
-                                    <TableColumn prefWidth="60.0" text="Nr. Rata" />
-                                    <TableColumn prefWidth="100.0" text="Data Scadenta" />
-                                    <TableColumn prefWidth="120.0" text="Suma Baza" />
-                                    <TableColumn prefWidth="100.0" text="Dobanda" />
-                                    <TableColumn prefWidth="120.0" text="Total Rata" />
+                                    <TableColumn fx:id="colRateNr" prefWidth="60.0" text="Nr. Rata" />
+                                    <TableColumn fx:id="colDeadline" prefWidth="100.0" text="Data Scadenta" />
+                                    <TableColumn fx:id="colBaseAmount" prefWidth="120.0" text="Suma Baza" />
+                                    <TableColumn fx:id="colInterest" prefWidth="100.0" text="Dobanda (%)" />
+                                    <TableColumn fx:id="colTotalAmount" prefWidth="120.0" text="Total Rata" />
                                 </columns>
                             </TableView>
-
-                            <HBox alignment="CENTER_RIGHT" spacing="10.0">
-                                <children>
-                                    <Button mnemonicParsing="false" text="Export PDF" />
-                                    <Button style="-fx-background-color: #2ecc71;" text="Continua spre Cerere Credit" textFill="WHITE">
-                                        <font>
-                                            <Font name="System Bold" size="12.0" />
-                                        </font></Button>
-                                </children>
-                            </HBox>
                         </children>
                     </VBox>
                 </children>

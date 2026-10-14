@@ -6,5 +6,6 @@ import java.time.LocalDate;
 
 public interface RateRepository extends CRUDRepository<Long, Rate>{
     Rate findNextDueDate(Long creditId);
-    Iterable<Rate> findAllOverdueCredits(LocalDate date);
+    Iterable<Rate> findAllOverdueRates(LocalDate date);
+    Iterable<Rate> findAllActiveRatesByClient(String cnp);
 }

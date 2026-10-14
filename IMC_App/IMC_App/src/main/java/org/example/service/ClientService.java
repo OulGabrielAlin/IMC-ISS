@@ -49,9 +49,9 @@ public class ClientService {
         }
     }
 
-    public void findClientByCNP(String cnp) {
+    public Client findClientByCNP(String cnp) {
         try {
-            Client client = clientRepository.findByCNP(cnp);
+            return clientRepository.findByCNP(cnp);
         } catch (EntityNotFoundException e) {
             throw new IMCException(e.getMessage());
         }

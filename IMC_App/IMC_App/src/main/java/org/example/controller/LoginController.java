@@ -13,9 +13,7 @@ import javafx.stage.Stage;
 import org.example.domain.Administrator;
 import org.example.domain.AgentCredit;
 import org.example.domain.AngajatIMC;
-import org.example.service.AuthService;
-import org.example.service.ClientService;
-import org.example.service.IMCException;
+import org.example.service.*;
 import org.example.utils.MessageAlert;
 
 import java.io.IOException;
@@ -23,10 +21,16 @@ import java.io.IOException;
 public class LoginController {
     private AuthService authService;
     private ClientService clientService;
+    private CreditService creditService;
+    private PaymentService paymentService;
+    private ReportService reportService;
 
-    public void setServices(AuthService authService, ClientService clientService) {
+    public void setServices(AuthService authService, ClientService clientService,  CreditService creditService, PaymentService paymentService, ReportService reportService) {
         this.authService = authService;
         this.clientService = clientService;
+        this.creditService = creditService;
+        this.paymentService = paymentService;
+        this.reportService = reportService;
     }
 
     @FXML
@@ -70,10 +74,10 @@ public class LoginController {
 
             if (angajatIMC instanceof AgentCredit) {
                 DashboardAgentController controller = (DashboardAgentController) fxmlLoader.getController();
-                controller.setServicesAndUser(authService, clientService, (AgentCredit) angajatIMC);
+                controller.setServicesAndUser(authService, clientService, creditService, paymentService, reportService, (AgentCredit) angajatIMC);
             } else if (angajatIMC instanceof Administrator) {
                 DashboardAdminController controller = (DashboardAdminController) fxmlLoader.getController();
-                controller.setServicesAndUser(authService, clientService, (Administrator) angajatIMC);
+                controller.setServicesAndUser(authService, clientService, creditService, paymentService, reportService, (Administrator) angajatIMC);
             }
 
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

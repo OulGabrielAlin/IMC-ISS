@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.LoginController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.LoginController">
    <children>
       <Label layoutX="271.0" layoutY="21.0" text="IMC">
          <font>
@@ -39,9 +39,9 @@
             <PasswordField fx:id="txtPassword" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
-      <VBox layoutX="242.0" layoutY="278.0" prefHeight="108.0" prefWidth="100.0" style="-fx-spacing: 20;">
+      <VBox layoutX="242.0" layoutY="278.0" prefHeight="108.0" prefWidth="130.0" style="-fx-spacing: 20;">
          <children>
-            <Button fx:id="btnLogin" mnemonicParsing="false" onAction="#handleLogin" text="Autentificare" />
+            <Button fx:id="btnLogin" mnemonicParsing="false" onAction="#handleLogin" prefHeight="34.0" prefWidth="130.0" text="Autentificare" />
          </children>
       </VBox>
    </children>
